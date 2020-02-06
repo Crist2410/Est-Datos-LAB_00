@@ -26,9 +26,24 @@ namespace Est_Datos_LAB_00.Controllers
         }
 
         // GET: Usuarios/Create
-        public ActionResult Create()
+        public ActionResult OUsuarios()
         {
-            return View();
+            UsuariosModel UsuarioAux = new UsuariosModel();
+
+            for (int i = 0; i < (A_Usuarios.Count - 1); i++)
+            {
+                for (int j = 0; j < (A_Usuarios.Count - i - 1); j++)
+                {
+                    if (string.Compare(A_Usuarios[j].Nombre, A_Usuarios[j + 1].Nombre) > 0)
+                    {
+                        UsuarioAux = A_Usuarios[j];
+                        A_Usuarios[j] = A_Usuarios[j + 1];
+                        A_Usuarios[j + 1] = UsuarioAux;
+                    }
+                }
+            }
+            ViewBag.Orden = A_Usuarios;
+            return View("OrdenarUsuarios");
         }
 
 
@@ -71,6 +86,27 @@ namespace Est_Datos_LAB_00.Controllers
             A_Usuarios.Add(Usuario);
             ViewBag.Usuarios = A_Usuarios;
             return View("MostrarUsuarios");
+        }
+
+        [HttpPost]
+        public IActionResult OrdenarUsuarios()
+        {
+            UsuariosModel UsuarioAux = new UsuariosModel();
+
+            for (int i = 0; i < (A_Usuarios.Count - 1); i++)
+            {
+                for (int j = 0; j < (A_Usuarios.Count - i - 1); j++)
+                {
+                    if (string.Compare(A_Usuarios[j].Nombre, A_Usuarios[j + 1].Nombre) > 0)
+                    {
+                        UsuarioAux = A_Usuarios[j];
+                        A_Usuarios[j] = A_Usuarios[j + 1];
+                        A_Usuarios[j + 1] = UsuarioAux;
+                    }
+                }
+            }
+            ViewBag.Usuarios = A_Usuarios;
+            return View("OrdenarUsuarios");
         }
 
 

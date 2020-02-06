@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<Est_Datos_LAB_00.Models.UsuariosModel>
 
 @{
-    ViewData["Title"] = "OrdenarUsuarios";
+    ViewData["Title"] = "Ordenar Usuarios";
 }
 
-<h1>OrdenarUsuarios</h1>
+<h1>Ordenar Usuarios</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -28,7 +26,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (UsuariosModel item in ViewBag.Orden) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -51,3 +49,6 @@
 }
     </tbody>
 </table>
+<div>
+    <a asp-action="Index">Crear Otro Usuario</a>
+</div>
