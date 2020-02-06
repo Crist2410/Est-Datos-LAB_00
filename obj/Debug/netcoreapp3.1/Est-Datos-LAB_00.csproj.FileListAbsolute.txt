@@ -118,3 +118,4 @@ C:\Users\Crist\Desktop\Est-Datos-LAB_00\obj\Debug\netcoreapp3.1\Est-Datos-LAB_00
 C:\Users\Crist\Desktop\Est-Datos-LAB_00\obj\Debug\netcoreapp3.1\Est-Datos-LAB_00.pdb
 C:\Users\Crist\Desktop\Est-Datos-LAB_00\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Index.cshtml.g.cs
 C:\Users\Crist\Desktop\Est-Datos-LAB_00\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\MostrarUsuarios.cshtml.g.cs
+C:\Users\Crist\Desktop\Est-Datos-LAB_00\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\OrdenarUsuarios.cshtml.g.cs
