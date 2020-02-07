@@ -7,6 +7,7 @@ namespace Est_Datos_LAB_00.Models
 {
     public class UsuariosModel
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
 
         public string Apellido  { get; set; }

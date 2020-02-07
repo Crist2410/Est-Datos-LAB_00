@@ -82,6 +82,7 @@ namespace Est_Datos_LAB_00.Controllers
             Usuario.Apellido = collection["Apellido"];
             Usuario.Telefono = int.Parse(collection["Telefono"]);
             Usuario.Info = collection["Info"];
+            Usuario.Id = A_Usuarios.Count +1;
 
             A_Usuarios.Add(Usuario);
             ViewBag.Usuarios = A_Usuarios;
