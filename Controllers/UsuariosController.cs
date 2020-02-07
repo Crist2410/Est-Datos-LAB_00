@@ -46,32 +46,25 @@ namespace Est_Datos_LAB_00.Controllers
             return View("OrdenarUsuarios");
         }
 
+        public ActionResult OApellidos()
+        {
+            UsuariosModel UsuarioAux = new UsuariosModel();
 
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        var pokemon = new PokemonModel
-        //        {
-        //            Name = collection["Name"],
-        //            Number = int.Parse(collection["Number"])
-        //        };
-
-        //        if (pokemon.Save())
-        //        {
-        //            return RedirectToAction("Index");
-        //        }
-        //        else
-        //        {
-        //            return View(pokemon);
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            for (int i = 0; i < (A_Usuarios.Count - 1); i++)
+            {
+                for (int j = 0; j < (A_Usuarios.Count - i - 1); j++)
+                {
+                    if (string.Compare(A_Usuarios[j].Apellido, A_Usuarios[j + 1].Apellido) > 0)
+                    {
+                        UsuarioAux = A_Usuarios[j];
+                        A_Usuarios[j] = A_Usuarios[j + 1];
+                        A_Usuarios[j + 1] = UsuarioAux;
+                    }
+                }
+            }
+            ViewBag.Orden = A_Usuarios;
+            return View("OrdenarUsuarios");
+        }
 
         [HttpPost]
         public IActionResult CreateUsuarios(IFormCollection collection)
@@ -88,28 +81,6 @@ namespace Est_Datos_LAB_00.Controllers
             ViewBag.Usuarios = A_Usuarios;
             return View("MostrarUsuarios");
         }
-
-        [HttpPost]
-        public IActionResult OrdenarUsuarios()
-        {
-            UsuariosModel UsuarioAux = new UsuariosModel();
-
-            for (int i = 0; i < (A_Usuarios.Count - 1); i++)
-            {
-                for (int j = 0; j < (A_Usuarios.Count - i - 1); j++)
-                {
-                    if (string.Compare(A_Usuarios[j].Nombre, A_Usuarios[j + 1].Nombre) > 0)
-                    {
-                        UsuarioAux = A_Usuarios[j];
-                        A_Usuarios[j] = A_Usuarios[j + 1];
-                        A_Usuarios[j + 1] = UsuarioAux;
-                    }
-                }
-            }
-            ViewBag.Usuarios = A_Usuarios;
-            return View("OrdenarUsuarios");
-        }
-
 
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
