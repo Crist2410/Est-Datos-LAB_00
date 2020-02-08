@@ -65,6 +65,26 @@ namespace Est_Datos_LAB_00.Controllers
             ViewBag.Orden = A_Usuarios;
             return View("OrdenarUsuarios");
         }
+        //int.Compare(A_Usuarios[j].Id, A_Usuarios[j + 1].Apellido) > 0
+        public ActionResult OrdenID()
+        {
+            UsuariosModel UsuarioAux = new UsuariosModel();
+
+            for (int j = 0; j <= (A_Usuarios.Count - 2); j++)
+            {
+                for (int i = 0; i <= (A_Usuarios.Count - 2); i++)
+                {
+                    if (A_Usuarios[i].Id > A_Usuarios[i + 1].Id)
+                    {
+                        UsuarioAux = A_Usuarios[i + 1];
+                        A_Usuarios[i + 1] = A_Usuarios[i];
+                        A_Usuarios[i] = UsuarioAux;
+                    }
+                }
+            }
+            ViewBag.Orden = A_Usuarios;
+            return View("OrdenarUsuarios");
+        }
 
         [HttpPost]
         public IActionResult CreateUsuarios(IFormCollection collection)
